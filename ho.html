@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kantaライフ｜プロの清掃サービス</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        /* ヘッダー */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c7bd5;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #2c7bd5;
+        }
+
+        /* メインビジュアル */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 30px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #fff;
+            color: #667eea;
+            padding: 18px 50px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 18px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* コンテナ */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 30px;
+        }
+
+        /* セクションタイトル */
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: #333;
+            font-weight: 700;
+        }
+
+        /* サービス一覧 */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: #f8f9fa;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #2c7bd5;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* 特徴セクション */
+        .features {
+            background: #f8f9fa;
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-item {
+            text-align: center;
+        }
+
+        .feature-number {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: #2c7bd5;
+            color: white;
+            border-radius: 50%;
+            line-height: 60px;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .feature-item h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .feature-item p {
+            color: #666;
+        }
+
+        /* お客様の声 */
+        .testimonials {
+            background: white;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .testimonial-text {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #2c7bd5;
+        }
+
+        /* 料金表 */
+        .pricing {
+            background: #f8f9fa;
+        }
+
+        .price-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .price-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .price-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .price {
+            font-size: 36px;
+            color: #2c7bd5;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .price-card ul {
+            list-style: none;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .price-card li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            color: #666;
+        }
+
+        .price-card li:before {
+            content: "✓ ";
+            color: #2c7bd5;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* お問い合わせセクション */
+        .contact {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-info {
+            margin-top: 40px;
+        }
+
+        .phone {
+            font-size: 42px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .business-hours {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        /* フッター */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .phone {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header>
+        <div class="header-content">
+            <div class="logo">✨ Kantaライフ</div>
+            <nav>
+                <a href="#services">サービス</a>
+                <a href="#features">選ばれる理由</a>
+                <a href="#pricing">料金</a>
+                <a href="#contact">お問い合わせ</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- メインビジュアル -->
+    <section id="home" class="hero">
+        <h1>日本式清掃で、快適な空間を</h1>
+        <p>あなたの大切な暮らしを、私たちがサポートします</p>
+        <a href="#contact" class="cta-button">無料見積もり依頼</a>
+    </section>
+
+    <!-- サービス一覧 -->
+    <section id="services" class="container">
+        <h2 class="section-title">サービス内容</h2>
+        <div class="services">
+            <div class="service-card">
+                <div class="service-icon">🏠</div>
+                <h3>ハウスクリーニング</h3>
+                <p>お部屋全体を隅々まで丁寧に清掃。引っ越し前後や定期清掃に最適です。</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">❄️</div>
+                <h3>エアコンクリーニング</h3>
+                <p>内部まで徹底洗浄。カビや臭いを除去し、清潔な空気環境を実現します。</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🚿</div>
+                <h3>水回りクリーニング</h3>
+                <p>キッチン・浴室・トイレなど、水回りの頑固な汚れをプロの技術で解決。</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🪟</div>
+                <h3>窓・ベランダ清掃</h3>
+                <p>手の届きにくい窓ガラスやサッシ、ベランダを徹底的に綺麗にします。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 選ばれる理由 -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">選ばれる3つの理由</h2>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-number">1</div>
+                    <h3>経験豊富なスタッフ</h3>
+                    <p>10年以上の実績を持つプロフェッショナルが、確かな技術でサービスを提供します。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-number">2</div>
+                    <h3>安心の料金体系</h3>
+                    <p>明確な料金設定で追加費用なし。ご予算に合わせたプランをご提案します。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-number">3</div>
+                    <h3>充実の保証制度</h3>
+                    <p>万が一の場合も損害保険に加入。安心してご依頼いただけます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- お客様の声 -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">お客様の声</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">「エアコンクリーニングを依頼しました。作業が丁寧で、仕上がりも大満足です。清潔な空気で快適に過ごせています。」</p>
+                    <p class="testimonial-author">東京都 A様</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">「引っ越し前の清掃をお願いしました。短時間で完璧に仕上げてくださり、大家さんからもお褒めの言葉をいただきました。」</p>
+                    <p class="testimonial-author">神奈川県 B様</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">「定期的に利用しています。スタッフの方が親切で、いつも丁寧な仕事をしてくださいます。信頼できる会社です。」</p>
+                    <p class="testimonial-author">埼玉県 C様</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 料金プラン -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2 class="section-title">料金プラン</h2>
+            <div class="price-cards">
+                <div class="price-card">
+                    <h3>ライトプラン</h3>
+                    <div class="price">¥8,000〜</div>
+                    <ul>
+                        <li>1R・1K対応</li>
+                        <li>基本清掃</li>
+                        <li>作業時間: 2時間</li>
+                    </ul>
+                </div>
+                <div class="price-card">
+                    <h3>スタンダードプラン</h3>
+                    <div class="price">¥15,000〜</div>
+                    <ul>
+                        <li>1LDK・2DK対応</li>
+                        <li>徹底清掃</li>
+                        <li>水回り含む</li>
+                        <li>作業時間: 3〜4時間</li>
+                    </ul>
+                </div>
+                <div class="price-card">
+                    <h3>プレミアムプラン</h3>
+                    <div class="price">¥25,000〜</div>
+                    <ul>
+                        <li>2LDK以上対応</li>
+                        <li>完全清掃</li>
+                        <li>エアコン清掃含む</li>
+                        <li>作業時間: 5時間以上</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- お問い合わせ -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">お問い合わせ</h2>
+            <p style="font-size: 20px;">お気軽にご相談ください</p>
+            <div class="contact-info">
+                <div class="phone">📞 0120-XXX-XXX</div>
+                <div class="business-hours">
+                    受付時間: 9:00 〜 18:00（年中無休）<br>
+                    メールでのお問い合わせ: info@cleanlife.com
+                </div>
+                <div style="margin-top: 40px;">
+                    <a href= "https://www.notion.so/29b6409fddd880c48836f3cc3a6e251e?pvs=106" target="_blank" class="cta-button">メールで問い合わせる</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+        <p>&copy; 2025 Kantaライフ. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
